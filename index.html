@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Your Name</title>
+<title>michael ghan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
   }
 
   body {
@@ -18,22 +19,23 @@
     color: #fff;
     display: flex;
     min-height: 100vh;
+    font-family: "Playfair Display", serif;
   }
 
   /* SIDEBAR */
   .sidebar {
-    width: 220px;
-    padding: 40px 25px;
+    width: 240px;
+    padding: 50px 30px;
     position: fixed;
     height: 100vh;
     border-right: 1px solid rgba(255,255,255,0.08);
   }
 
-  .logo {
-    font-size: 14px;
-    letter-spacing: 2px;
+  .name {
+    font-size: 20px;
+    letter-spacing: 1px;
     margin-bottom: 60px;
-    opacity: 0.8;
+    text-transform: lowercase;
   }
 
   .menu a {
@@ -41,7 +43,9 @@
     color: #aaa;
     text-decoration: none;
     margin-bottom: 18px;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: lowercase;
     cursor: pointer;
     transition: 0.2s;
   }
@@ -52,30 +56,38 @@
 
   /* CONTENT */
   .content {
-    margin-left: 220px;
-    padding: 60px;
+    margin-left: 240px;
+    padding: 70px;
     width: 100%;
   }
 
   section {
-    display: none; /* IMPORTANT: hidden by default */
+    display: none;
   }
 
   section.active {
-    display: block; /* only active section shows */
+    display: block;
   }
 
   h2 {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-weight: 400;
+    text-transform: lowercase;
     letter-spacing: 1px;
   }
 
   p {
     color: #aaa;
-    line-height: 1.6;
+    line-height: 1.8;
     max-width: 600px;
+    font-size: 14px;
+  }
+
+  .email {
+    margin-top: 20px;
+    color: #777;
+    font-size: 13px;
   }
 
   .grid {
@@ -92,7 +104,7 @@
 
   .photo {
     width: 100%;
-    height: 300px;
+    height: 320px;
     object-fit: cover;
   }
 
@@ -117,12 +129,12 @@
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="logo">YOUR NAME</div>
+  <div class="name">michael ghan</div>
 
   <div class="menu">
-    <a onclick="showSection('video')">Video</a>
-    <a onclick="showSection('photo')">Photo</a>
-    <a onclick="showSection('bio')">Bio</a>
+    <a onclick="showSection('video')">video</a>
+    <a onclick="showSection('photo')">photo</a>
+    <a onclick="showSection('bio')">bio</a>
   </div>
 </div>
 
@@ -131,7 +143,7 @@
 
   <!-- VIDEO -->
   <section id="video" class="active">
-    <h2>Video</h2>
+    <h2>video</h2>
 
     <div class="grid">
       <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
@@ -141,7 +153,7 @@
 
   <!-- PHOTO -->
   <section id="photo">
-    <h2>Photo</h2>
+    <h2>photo</h2>
 
     <div class="grid">
       <img class="photo" src="https://images.unsplash.com/photo-1520975922284-9f97b3b3c7a1"/>
@@ -152,11 +164,15 @@
 
   <!-- BIO -->
   <section id="bio">
-    <h2>Bio</h2>
+    <h2>bio</h2>
+
     <p>
-      Write your bio here. Keep it short and clean.
-      Talk about your style, work, and what you create.
+      filmmaker + photographer living in los angeles
     </p>
+
+    <div class="email">
+      nightmarish.desires@gmail.com
+    </div>
   </section>
 
 </div>
