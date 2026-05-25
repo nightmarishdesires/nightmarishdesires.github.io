@@ -20,7 +20,7 @@
     min-height: 100vh;
   }
 
-  /* LEFT SIDEBAR */
+  /* SIDEBAR */
   .sidebar {
     width: 220px;
     padding: 40px 25px;
@@ -42,6 +42,7 @@
     text-decoration: none;
     margin-bottom: 18px;
     font-size: 14px;
+    cursor: pointer;
     transition: 0.2s;
   }
 
@@ -49,7 +50,7 @@
     color: #fff;
   }
 
-  /* MAIN CONTENT */
+  /* CONTENT */
   .content {
     margin-left: 220px;
     padding: 60px;
@@ -57,7 +58,11 @@
   }
 
   section {
-    margin-bottom: 80px;
+    display: none; /* IMPORTANT: hidden by default */
+  }
+
+  section.active {
+    display: block; /* only active section shows */
   }
 
   h2 {
@@ -73,7 +78,6 @@
     max-width: 600px;
   }
 
-  /* VIDEO GRID */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -86,14 +90,12 @@
     border: none;
   }
 
-  /* PHOTO GRID */
   .photo {
     width: 100%;
     height: 300px;
     object-fit: cover;
   }
 
-  /* MOBILE */
   @media (max-width: 768px) {
     .sidebar {
       position: relative;
@@ -118,17 +120,17 @@
   <div class="logo">YOUR NAME</div>
 
   <div class="menu">
-    <a href="#video">Video</a>
-    <a href="#photo">Photo</a>
-    <a href="#bio">Bio</a>
+    <a onclick="showSection('video')">Video</a>
+    <a onclick="showSection('photo')">Photo</a>
+    <a onclick="showSection('bio')">Bio</a>
   </div>
 </div>
 
-<!-- MAIN -->
+<!-- CONTENT -->
 <div class="content">
 
   <!-- VIDEO -->
-  <section id="video">
+  <section id="video" class="active">
     <h2>Video</h2>
 
     <div class="grid">
@@ -142,9 +144,9 @@
     <h2>Photo</h2>
 
     <div class="grid">
-      <img class="photo" src="https://images.unsplash.com/photo-1520975922284-9f97b3b3c7a1" />
-      <img class="photo" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
-      <img class="photo" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4" />
+      <img class="photo" src="https://images.unsplash.com/photo-1520975922284-9f97b3b3c7a1"/>
+      <img class="photo" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"/>
+      <img class="photo" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4"/>
     </div>
   </section>
 
@@ -152,12 +154,24 @@
   <section id="bio">
     <h2>Bio</h2>
     <p>
-      Write a short bio here. Keep it minimal. Talk about your style,
-      what you shoot, and what you create. No long paragraphs.
+      Write your bio here. Keep it short and clean.
+      Talk about your style, work, and what you create.
     </p>
   </section>
 
 </div>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll("section");
+
+    sections.forEach(sec => {
+      sec.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+  }
+</script>
 
 </body>
 </html>
