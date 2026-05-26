@@ -114,9 +114,41 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .photo:hover {
+    opacity: 0.85;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 40px;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+
+  .lightbox.active {
+    display: flex;
   }
 
   @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+
     .sidebar {
       position: relative;
       width: 100%;
@@ -191,6 +223,11 @@
 
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="">
+</div>
+
 <script>
   function showSection(id) {
     const sections = document.querySelectorAll("section");
@@ -201,6 +238,21 @@
 
     document.getElementById(id).classList.add("active");
   }
+
+  const photos = document.querySelectorAll(".photo");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  photos.forEach(photo => {
+    photo.addEventListener("click", () => {
+      lightbox.classList.add("active");
+      lightboxImg.src = photo.src;
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+  });
 </script>
 
 </body>
