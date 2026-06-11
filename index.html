@@ -162,10 +162,54 @@
       padding: 30px;
     }
   }
+
+  /* ========================= */
+  /* LANDING (ADDED ONLY)      */
+  /* ========================= */
+
+  #landing-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #landing-screen video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #landing-enter {
+    position: relative;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    color: white;
+    z-index: 2;
+  }
 </style>
 </head>
 
 <body>
+
+<!-- ========================= -->
+<!-- LANDING (ADDED ONLY)      -->
+<!-- ========================= -->
+<div id="landing-screen">
+  <video autoplay muted loop playsinline>
+    <source src="landing.mp4" type="video/mp4">
+  </video>
+
+  <div id="landing-enter">enter</div>
+</div>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
@@ -183,96 +227,65 @@
 <!-- CONTENT -->
 <div class="content">
 
-<!-- VIDEO -->
 <section id="video" class="active">
   <h2>video</h2>
 
-  <!-- Vimeo 1 -->
   <p style="margin-bottom:15px;">shadows 2023</p>
   <div class="video">
-    <iframe 
-      src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0" allowfullscreen></iframe>
   </div>
 
-  <!-- Vimeo 2 -->
   <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
   <div class="video">
-    <iframe
-      src="https://player.vimeo.com/video/1200260766?badge=0&autopause=0&player_id=0&app_id=58479"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://player.vimeo.com/video/1200260766" allowfullscreen></iframe>
   </div>
 
-  <!-- YouTube -->
   <p style="margin:40px 0 15px 0;">swamp 2019</p>
   <div class="video">
-    <iframe
-      src="https://www.youtube.com/embed/wBJBsNOXics"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://www.youtube.com/embed/wBJBsNOXics" allowfullscreen></iframe>
   </div>
 
 </section>
 
-  <!-- PHOTO -->
-  <section id="photo">
-    <h2>photo</h2>
+<section id="photo">
+  <h2>photo</h2>
 
-    <div class="grid">
-      <img class="photo" src="img001.jpg"/>
-      <img class="photo" src="img003.jpg"/>
-      <img class="photo" src="img005.jpg"/>
-      <img class="photo" src="img020.jpg"/>
-      <img class="photo" src="img021.jpg"/>
-      <img class="photo" src="img067.jpg"/>
-    </div>
-  </section>
+  <div class="grid">
+    <img class="photo" src="img001.jpg"/>
+    <img class="photo" src="img003.jpg"/>
+    <img class="photo" src="img005.jpg"/>
+    <img class="photo" src="img020.jpg"/>
+    <img class="photo" src="img021.jpg"/>
+    <img class="photo" src="img067.jpg"/>
+  </div>
+</section>
 
-  <!-- BOOKS -->
-  <section id="books">
-    <h2>books</h2>
+<section id="books">
+  <h2>books</h2>
 
-    <p style="margin-bottom: 30px;">
-      nightmarish desires vol 1
-    </p>
+  <p style="margin-bottom: 30px;">nightmarish desires vol 1</p>
 
- <div class="grid">
-  <img class="photo" src="book1.JPG"/>
-  <img class="photo" src="book2.JPG"/>
-  <img class="photo" src="book3.JPG"/>
-  <img class="photo" src="book4.JPG"/>
-  <img class="photo" src="book5.JPG"/>
-  <img class="photo" src="book6.JPG"/>
-  <img class="photo" src="book7.JPG"/>
-</div>
-  </section>
+  <div class="grid">
+    <img class="photo" src="book1.JPG"/>
+    <img class="photo" src="book2.JPG"/>
+    <img class="photo" src="book3.JPG"/>
+    <img class="photo" src="book4.JPG"/>
+    <img class="photo" src="book5.JPG"/>
+    <img class="photo" src="book6.JPG"/>
+    <img class="photo" src="book7.JPG"/>
+  </div>
+</section>
 
-  <!-- SOUND -->
-  <section id="sound">
-    <h2>sound</h2>
+<section id="sound">
+  <h2>sound</h2>
+  <p>coming soon</p>
+</section>
 
-    <p>
-      coming soon
-    </p>
-  </section>
-
-  <!-- BIO -->
-  <section id="bio">
-    <h2>bio</h2>
-
-    <p>
-      filmmaker + photographer living in los angeles
-    </p>
-
-    <div class="email">
-      nightmarish.desires@gmail.com
-    </div>
-  </section>
+<section id="bio">
+  <h2>bio</h2>
+  <p>filmmaker + photographer living in los angeles</p>
+  <div class="email">nightmarish.desires@gmail.com</div>
+</section>
 
 </div>
 
@@ -283,12 +296,9 @@
 
 <script>
   function showSection(id) {
-    const sections = document.querySelectorAll("section");
-
-    sections.forEach(sec => {
+    document.querySelectorAll("section").forEach(sec => {
       sec.classList.remove("active");
     });
-
     document.getElementById(id).classList.add("active");
   }
 
@@ -305,6 +315,11 @@
 
   lightbox.addEventListener("click", () => {
     lightbox.classList.remove("active");
+  });
+
+  // LANDING ONLY
+  document.getElementById("landing-enter").addEventListener("click", () => {
+    document.getElementById("landing-screen").style.display = "none";
   });
 </script>
 
