@@ -54,7 +54,7 @@
     color: #fff;
   }
 
-  /* CONTENT (UNCHANGED LAYOUT) */
+  /* CONTENT */
   .content {
     margin-left: 240px;
     padding: 70px;
@@ -90,7 +90,7 @@
     font-size: 13px;
   }
 
-  /* VIDEO (RESTORED ORIGINAL EXACT BEHAVIOR) */
+  /* VIDEO */
   .video {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -144,46 +144,6 @@
     display: flex;
   }
 
-  /* LANDING (SIMPLIFIED PER REQUEST) */
-  #landing {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: black;
-    overflow: hidden;
-  }
-
-  #landing video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: contrast(1.05) brightness(0.9);
-  }
-
-  #enter-btn {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: lowercase;
-    color: white;
-
-    cursor: pointer;
-  }
-
-  .hidden-site {
-    display: none;
-  }
-
-  #landing.fade-out {
-    opacity: 0;
-    transition: opacity 0.8s ease;
-  }
-
   @media (max-width: 768px) {
     body {
       flex-direction: column;
@@ -202,24 +162,55 @@
       padding: 30px;
     }
   }
+
+  /* ===================== */
+  /* LANDING (ONLY ADDITION) */
+  /* ===================== */
+
+  #landing {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #landing video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #enter {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    color: white;
+  }
+
+  .hidden {
+    display: none;
+  }
 </style>
 </head>
 
 <body>
 
-<!-- LANDING -->
+<!-- LANDING (ONLY ADDITION) -->
 <div id="landing">
-
   <video autoplay muted loop playsinline>
-    <source src="./landing.mp4" type="video/mp4">
+    <source src="landing.mp4" type="video/mp4">
   </video>
-
-  <div id="enter-btn">enter</div>
-
+  <div id="enter">enter</div>
 </div>
 
-<!-- SITE -->
-<div id="site-content" class="hidden-site">
+<!-- SITE WRAPPED (ONLY ADDITION) -->
+<div id="site" class="hidden">
 
 <!-- SIDEBAR -->
 <div class="sidebar">
@@ -237,30 +228,43 @@
 <!-- CONTENT -->
 <div class="content">
 
-  <!-- VIDEO (UNCHANGED STRUCTURE) -->
-  <section id="video" class="active">
-    <h2>video</h2>
+<!-- VIDEO -->
+<section id="video" class="active">
+  <h2>video</h2>
 
-    <div class="video">
-      <iframe src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0"
-        allowfullscreen></iframe>
-    </div>
+  <!-- Vimeo 1 -->
+  <p style="margin-bottom:15px;">shadows 2023</p>
+  <div class="video">
+    <iframe 
+      src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-    <div class="video">
-      <iframe src="https://player.vimeo.com/video/1200260766"
-        allowfullscreen></iframe>
-    </div>
+  <!-- Vimeo 2 -->
+  <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
+  <div class="video">
+    <iframe
+      src="https://player.vimeo.com/video/1200260766"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/wBJBsNOXics"
-        allowfullscreen></iframe>
-    </div>
+  <!-- YouTube -->
+  <p style="margin:40px 0 15px 0;">swamp 2019</p>
+  <div class="video">
+    <iframe
+      src="https://www.youtube.com/embed/wBJBsNOXics"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-  </section>
+</section>
 
   <!-- PHOTO -->
   <section id="photo">
     <h2>photo</h2>
+
     <div class="grid">
       <img class="photo" src="img001.jpg"/>
       <img class="photo" src="img003.jpg"/>
@@ -274,17 +278,20 @@
   <!-- BOOKS -->
   <section id="books">
     <h2>books</h2>
-    <p style="margin-bottom: 30px;">nightmarish desires vol 1</p>
 
-    <div class="grid">
-      <img class="photo" src="book1.JPG"/>
-      <img class="photo" src="book2.JPG"/>
-      <img class="photo" src="book3.JPG"/>
-      <img class="photo" src="book4.JPG"/>
-      <img class="photo" src="book5.JPG"/>
-      <img class="photo" src="book6.JPG"/>
-      <img class="photo" src="book7.JPG"/>
-    </div>
+    <p style="margin-bottom: 30px;">
+      nightmarish desires vol 1
+    </p>
+
+ <div class="grid">
+  <img class="photo" src="book1.JPG"/>
+  <img class="photo" src="book2.JPG"/>
+  <img class="photo" src="book3.JPG"/>
+  <img class="photo" src="book4.JPG"/>
+  <img class="photo" src="book5.JPG"/>
+  <img class="photo" src="book6.JPG"/>
+  <img class="photo" src="book7.JPG"/>
+</div>
   </section>
 
   <!-- SOUND -->
@@ -316,27 +323,25 @@
     document.getElementById(id).classList.add("active");
   }
 
-  document.querySelectorAll(".photo").forEach(photo => {
+  const photos = document.querySelectorAll(".photo");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  photos.forEach(photo => {
     photo.addEventListener("click", () => {
-      document.getElementById("lightbox").classList.add("active");
-      document.getElementById("lightbox-img").src = photo.src;
+      lightbox.classList.add("active");
+      lightboxImg.src = photo.src;
     });
   });
 
-  document.getElementById("lightbox").addEventListener("click", () => {
-    document.getElementById("lightbox").classList.remove("active");
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
   });
 
-  document.getElementById("enter-btn").addEventListener("click", () => {
-    const landing = document.getElementById("landing");
-    const site = document.getElementById("site-content");
-
-    landing.classList.add("fade-out");
-
-    setTimeout(() => {
-      landing.style.display = "none";
-      site.classList.remove("hidden-site");
-    }, 800);
+  // LANDING ENTER (ONLY ADDITION)
+  document.getElementById("landing").addEventListener("click", () => {
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("site").classList.remove("hidden");
   });
 </script>
 
