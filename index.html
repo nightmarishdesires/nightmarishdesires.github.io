@@ -144,6 +144,70 @@
     display: flex;
   }
 
+  /* LANDING */
+  #landing {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: black;
+    overflow: hidden;
+  }
+
+  #landing video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05) brightness(0.9);
+  }
+
+  #landing-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.25);
+    text-align: center;
+  }
+
+  #landing-title {
+    font-size: 38px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  #landing-subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #bbb;
+    margin-bottom: 40px;
+  }
+
+  #enter-btn {
+    font-size: 12px;
+    letter-spacing: 3px;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 10px 28px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+  }
+
+  #enter-btn:hover {
+    background: white;
+    color: black;
+  }
+
+  .hidden-site {
+    display: none;
+  }
+
+  #landing.fade-out {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
   @media (max-width: 768px) {
     body {
       flex-direction: column;
@@ -167,6 +231,24 @@
 
 <body>
 
+<!-- LANDING -->
+<div id="landing">
+
+  <video autoplay muted loop playsinline>
+    <source src="landingvideo.mp4" type="video/mp4">
+  </video>
+
+  <div id="landing-overlay">
+    <div id="landing-title">michael ghan</div>
+    <div id="landing-subtitle">filmmaker + photographer</div>
+    <div id="enter-btn">enter</div>
+  </div>
+
+</div>
+
+<!-- SITE -->
+<div id="site-content" class="hidden-site">
+
 <!-- SIDEBAR -->
 <div class="sidebar">
   <div class="name">michael ghan</div>
@@ -183,46 +265,42 @@
 <!-- CONTENT -->
 <div class="content">
 
-<!-- VIDEO -->
-<section id="video" class="active">
-  <h2>video</h2>
+  <!-- VIDEO -->
+  <section id="video" class="active">
+    <h2>video</h2>
 
-  <!-- Vimeo 1 -->
-  <p style="margin-bottom:15px;">shadows 2023</p>
-  <div class="video">
-    <iframe 
-      src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+    <p style="margin-bottom:15px;">shadows 2023</p>
+    <div class="video">
+      <iframe 
+        src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-  <!-- Vimeo 2 -->
-  <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
-  <div class="video">
-    <iframe
-      src="https://player.vimeo.com/video/1200260766?badge=0&autopause=0&player_id=0&app_id=58479"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
+    <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
+    <div class="video">
+      <iframe
+        src="https://player.vimeo.com/video/1200260766?badge=0&autopause=0&player_id=0&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-  <!-- YouTube -->
-  <p style="margin:40px 0 15px 0;">swamp 2019</p>
-  <div class="video">
-    <iframe
-      src="https://www.youtube.com/embed/wBJBsNOXics"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+    <p style="margin:40px 0 15px 0;">swamp 2019</p>
+    <div class="video">
+      <iframe
+        src="https://www.youtube.com/embed/wBJBsNOXics"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-</section>
+  </section>
 
   <!-- PHOTO -->
   <section id="photo">
     <h2>photo</h2>
-
     <div class="grid">
       <img class="photo" src="img001.jpg"/>
       <img class="photo" src="img003.jpg"/>
@@ -236,42 +314,30 @@
   <!-- BOOKS -->
   <section id="books">
     <h2>books</h2>
+    <p style="margin-bottom: 30px;">nightmarish desires vol 1</p>
 
-    <p style="margin-bottom: 30px;">
-      nightmarish desires vol 1
-    </p>
-
- <div class="grid">
-  <img class="photo" src="book1.JPG"/>
-  <img class="photo" src="book2.JPG"/>
-  <img class="photo" src="book3.JPG"/>
-  <img class="photo" src="book4.JPG"/>
-  <img class="photo" src="book5.JPG"/>
-  <img class="photo" src="book6.JPG"/>
-  <img class="photo" src="book7.JPG"/>
-</div>
+    <div class="grid">
+      <img class="photo" src="book1.JPG"/>
+      <img class="photo" src="book2.JPG"/>
+      <img class="photo" src="book3.JPG"/>
+      <img class="photo" src="book4.JPG"/>
+      <img class="photo" src="book5.JPG"/>
+      <img class="photo" src="book6.JPG"/>
+      <img class="photo" src="book7.JPG"/>
+    </div>
   </section>
 
   <!-- SOUND -->
   <section id="sound">
     <h2>sound</h2>
-
-    <p>
-      coming soon
-    </p>
+    <p>coming soon</p>
   </section>
 
   <!-- BIO -->
   <section id="bio">
     <h2>bio</h2>
-
-    <p>
-      filmmaker + photographer living in los angeles
-    </p>
-
-    <div class="email">
-      nightmarish.desires@gmail.com
-    </div>
+    <p>filmmaker + photographer living in los angeles</p>
+    <div class="email">nightmarish.desires@gmail.com</div>
   </section>
 
 </div>
@@ -281,14 +347,12 @@
   <img id="lightbox-img" src="">
 </div>
 
+</div>
+
 <script>
   function showSection(id) {
     const sections = document.querySelectorAll("section");
-
-    sections.forEach(sec => {
-      sec.classList.remove("active");
-    });
-
+    sections.forEach(sec => sec.classList.remove("active"));
     document.getElementById(id).classList.add("active");
   }
 
@@ -305,6 +369,18 @@
 
   lightbox.addEventListener("click", () => {
     lightbox.classList.remove("active");
+  });
+
+  document.getElementById("enter-btn").addEventListener("click", () => {
+    const landing = document.getElementById("landing");
+    const site = document.getElementById("site-content");
+
+    landing.classList.add("fade-out");
+
+    setTimeout(() => {
+      landing.style.display = "none";
+      site.classList.remove("hidden-site");
+    }, 800);
   });
 </script>
 
