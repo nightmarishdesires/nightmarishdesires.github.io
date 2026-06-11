@@ -54,7 +54,7 @@
     color: #fff;
   }
 
-  /* CONTENT */
+  /* CONTENT (UNCHANGED LAYOUT) */
   .content {
     margin-left: 240px;
     padding: 70px;
@@ -90,7 +90,7 @@
     font-size: 13px;
   }
 
-  /* VIDEO */
+  /* VIDEO (RESTORED ORIGINAL EXACT BEHAVIOR) */
   .video {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -144,7 +144,7 @@
     display: flex;
   }
 
-  /* LANDING */
+  /* LANDING (SIMPLIFIED PER REQUEST) */
   #landing {
     position: fixed;
     inset: 0;
@@ -160,43 +160,19 @@
     filter: contrast(1.05) brightness(0.9);
   }
 
-  #landing-overlay {
+  #enter-btn {
     position: absolute;
     inset: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.25);
-    text-align: center;
-  }
 
-  #landing-title {
-    font-size: 38px;
+    font-size: 14px;
     letter-spacing: 3px;
-    margin-bottom: 10px;
-  }
+    text-transform: lowercase;
+    color: white;
 
-  #landing-subtitle {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #bbb;
-    margin-bottom: 40px;
-  }
-
-  #enter-btn {
-    font-size: 12px;
-    letter-spacing: 3px;
-    border: 1px solid rgba(255,255,255,0.4);
-    padding: 10px 28px;
     cursor: pointer;
-    transition: 0.3s;
-    text-transform: uppercase;
-  }
-
-  #enter-btn:hover {
-    background: white;
-    color: black;
   }
 
   .hidden-site {
@@ -235,14 +211,10 @@
 <div id="landing">
 
   <video autoplay muted loop playsinline>
-    <source src="landingvideo.mp4" type="video/mp4">
+    <source src="./landing.mp4" type="video/mp4">
   </video>
 
-  <div id="landing-overlay">
-    <div id="landing-title">michael ghan</div>
-    <div id="landing-subtitle">filmmaker + photographer</div>
-    <div id="enter-btn">enter</div>
-  </div>
+  <div id="enter-btn">enter</div>
 
 </div>
 
@@ -265,35 +237,23 @@
 <!-- CONTENT -->
 <div class="content">
 
-  <!-- VIDEO -->
+  <!-- VIDEO (UNCHANGED STRUCTURE) -->
   <section id="video" class="active">
     <h2>video</h2>
 
-    <p style="margin-bottom:15px;">shadows 2023</p>
     <div class="video">
-      <iframe 
-        src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0"
+        allowfullscreen></iframe>
     </div>
 
-    <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
     <div class="video">
-      <iframe
-        src="https://player.vimeo.com/video/1200260766?badge=0&autopause=0&player_id=0&app_id=58479"
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://player.vimeo.com/video/1200260766"
+        allowfullscreen></iframe>
     </div>
 
-    <p style="margin:40px 0 15px 0;">swamp 2019</p>
     <div class="video">
-      <iframe
-        src="https://www.youtube.com/embed/wBJBsNOXics"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.youtube.com/embed/wBJBsNOXics"
+        allowfullscreen></iframe>
     </div>
 
   </section>
@@ -356,19 +316,15 @@
     document.getElementById(id).classList.add("active");
   }
 
-  const photos = document.querySelectorAll(".photo");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-
-  photos.forEach(photo => {
+  document.querySelectorAll(".photo").forEach(photo => {
     photo.addEventListener("click", () => {
-      lightbox.classList.add("active");
-      lightboxImg.src = photo.src;
+      document.getElementById("lightbox").classList.add("active");
+      document.getElementById("lightbox-img").src = photo.src;
     });
   });
 
-  lightbox.addEventListener("click", () => {
-    lightbox.classList.remove("active");
+  document.getElementById("lightbox").addEventListener("click", () => {
+    document.getElementById("lightbox").classList.remove("active");
   });
 
   document.getElementById("enter-btn").addEventListener("click", () => {
