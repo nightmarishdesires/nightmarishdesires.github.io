@@ -54,7 +54,7 @@
     color: #fff;
   }
 
-  /* CONTENT (UNCHANGED) */
+  /* CONTENT */
   .content {
     margin-left: 240px;
     padding: 70px;
@@ -90,11 +90,15 @@
     font-size: 13px;
   }
 
-  /* VIDEO (UNCHANGED = FIXES YOUR ISSUE) */
+  /* ===================== */
+  /* VIDEO (UPDATED ONLY)   */
+  /* ===================== */
+
   .video {
     width: 100%;
     aspect-ratio: 16 / 9;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    max-width: 1100px;
   }
 
   .video iframe {
@@ -104,11 +108,15 @@
     display: block;
   }
 
-  /* PHOTO GRID */
+  /* ===================== */
+  /* GRID (UPDATED ONLY)    */
+  /* ===================== */
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    max-width: 1100px;
   }
 
   .photo {
@@ -117,6 +125,7 @@
     object-fit: cover;
     cursor: pointer;
     transition: 0.3s ease;
+    display: block;
   }
 
   .photo:hover {
@@ -145,43 +154,6 @@
     display: flex;
   }
 
-  /* ========================= */
-  /* SURGICAL LANDING OVERLAY  */
-  /* ========================= */
-
-  #landing {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: black;
-    cursor: pointer;
-  }
-
-  #landing video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #enter {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: lowercase;
-    color: white;
-  }
-
-  .hidden {
-    display: none;
-  }
-
   @media (max-width: 768px) {
     body {
       flex-direction: column;
@@ -205,17 +177,6 @@
 
 <body>
 
-<!-- SURGICAL LANDING (DOES NOT TOUCH LAYOUT) -->
-<div id="landing">
-  <video autoplay muted loop playsinline>
-    <source src="./landing.mp4" type="video/mp4">
-  </video>
-  <div id="enter">enter</div>
-</div>
-
-<!-- YOUR SITE (UNCHANGED STRUCTURE) -->
-<div id="site">
-
 <!-- SIDEBAR -->
 <div class="sidebar">
   <div class="name">michael ghan</div>
@@ -232,12 +193,13 @@
 <!-- CONTENT -->
 <div class="content">
 
+<!-- VIDEO -->
 <section id="video" class="active">
   <h2>video</h2>
 
   <p style="margin-bottom:15px;">shadows 2023</p>
   <div class="video">
-    <iframe src="https://player.vimeo.com/video/839530277" allowfullscreen></iframe>
+    <iframe src="https://player.vimeo.com/video/839530277?title=0&byline=0&portrait=0" allowfullscreen></iframe>
   </div>
 
   <p style="margin:40px 0 15px 0;">passing heaven 2025</p>
@@ -252,8 +214,10 @@
 
 </section>
 
+<!-- PHOTO -->
 <section id="photo">
   <h2>photo</h2>
+
   <div class="grid">
     <img class="photo" src="img001.jpg"/>
     <img class="photo" src="img003.jpg"/>
@@ -264,10 +228,13 @@
   </div>
 </section>
 
+<!-- BOOKS -->
 <section id="books">
   <h2>books</h2>
 
-  <p style="margin-bottom: 30px;">nightmarish desires vol 1</p>
+  <p style="margin-bottom: 30px;">
+    nightmarish desires vol 1
+  </p>
 
   <div class="grid">
     <img class="photo" src="book1.JPG"/>
@@ -280,18 +247,19 @@
   </div>
 </section>
 
+<!-- SOUND -->
 <section id="sound">
   <h2>sound</h2>
   <p>coming soon</p>
 </section>
 
+<!-- BIO -->
 <section id="bio">
   <h2>bio</h2>
   <p>filmmaker + photographer living in los angeles</p>
   <div class="email">nightmarish.desires@gmail.com</div>
 </section>
 
-</div>
 </div>
 
 <!-- LIGHTBOX -->
@@ -316,10 +284,6 @@
 
   document.getElementById("lightbox").addEventListener("click", () => {
     document.getElementById("lightbox").classList.remove("active");
-  });
-
-  document.getElementById("enter").addEventListener("click", () => {
-    document.getElementById("landing").style.display = "none";
   });
 </script>
 
